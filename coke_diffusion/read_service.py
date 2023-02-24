@@ -12,8 +12,8 @@ from coke_diffusion import messages
 
 logger = configure_logging(__file__)
 
-THREAD_ID = 1628971386038530049
-AUTHOR_ID = 1037382807197294592
+THREAD_ID = 1629173900197371904
+AUTHOR_ID = 1623020917965348865
 MAX_USER_CREATIONS = 50
 
 
@@ -159,15 +159,12 @@ def main():
                 replies = [tw for tw in response.data if is_top_level_reply(tw)]
                 logger.info(f"Found {len(replies)} new top-level replies.")
                 if replies:
-                    follower_replies, nonfollower_replies = is_follower_check(replies)
-                    for reply in follower_replies:
+                    for reply in replies:
                         creation_count = get_user_creation_count(reply.author_id)
                         if creation_count >= MAX_USER_CREATIONS:
                             handle_reached_max_user_creation_limit(reply)
                         else:
                             handle_valid_reply(reply)
-                    for reply in nonfollower_replies:
-                        handle_nonfollower_reply(reply)
 
                     newest_id = response.meta["newest_id"]
         except Exception as e:
