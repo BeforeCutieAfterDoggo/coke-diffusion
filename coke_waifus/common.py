@@ -1,4 +1,5 @@
 import logging
+from logging.handlers import RotatingFileHandler
 import os
 from pathlib import Path
 import sys
@@ -52,10 +53,7 @@ def start_prediction(data):
 
 
 def prompt_formatter(prompt):
-    return (
-        prompt
-        + ", subtle Coca-Cola branding and logos in background"
-    )
+    return prompt + ", subtle Coca-Cola branding and logos in background"
 
 
 def send_real2real_request(prompt):
@@ -90,7 +88,7 @@ def configure_logging(filename):
         filemode="a",
     )
     logger = logging.getLogger(filename)
-    handler = logging.StreamHandler(sys.stdout)
+    handler = RotatingFileHandler(logfile_path, maxBytes=1000000, backupCount=5)
     formatter = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     )
