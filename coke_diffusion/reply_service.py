@@ -4,8 +4,8 @@ import tempfile
 
 import requests
 
-from coke_waifus.common import db, client, api, configure_logging
-from coke_waifus.messages import COMPLETE_RESPONSES
+from coke_diffusion.common import db, client, api, configure_logging
+from coke_diffusion.messages import COMPLETE_RESPONSES
 
 logger = configure_logging(__file__)
 

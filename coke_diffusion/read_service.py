@@ -1,14 +1,14 @@
 import re
 import time
 
-from coke_waifus.common import (
+from coke_diffusion.common import (
     api,
     db,
     client,
     send_real2real_request,
     configure_logging,
 )
-from coke_waifus import messages
+from coke_diffusion import messages
 
 logger = configure_logging(__file__)
 

@@ -1,12 +1,12 @@
 import time
 
-from coke_waifus.common import (
+from coke_diffusion.common import (
     db,
     poll_eden_jobs,
     construct_result_url,
     configure_logging,
 )
-from coke_waifus import messages
+from coke_diffusion import messages
 
 logger = configure_logging(__file__)
 
